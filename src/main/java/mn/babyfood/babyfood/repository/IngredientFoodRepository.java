@@ -19,7 +19,7 @@ public class IngredientFoodRepository {
     }
     public Integer post(IngredientFood i){
 
-        return jdbcTemplate.update("INSERT INTO TB_INGREDIENT_FOOD (name, description, food_id, ingredient_id, type, status, created_on, updated_on) VALUES(?, ?, ?, ?, ?, ?, current_timestamp, current_timestamp)",
-                i.getName(), i.getDescription(), i.getFood_id(), i.getIngredient_id(), i.getType(), i.getStatus());
+        return jdbcTemplate.update("INSERT INTO TB_INGREDIENT_FOOD (name, description, food_id, ingredient_id, type, status, amount, amount_type, created_on, updated_on) VALUES(?, ?, ?, ?, ?, ?, ?, ?, current_timestamp, current_timestamp)",
+                i.getName(), i.getDescription(), i.getFood_id(), i.getIngredient_id(), i.getType(), i.getStatus(), i.getAmount(), i.getAmount_type());
     }
 }

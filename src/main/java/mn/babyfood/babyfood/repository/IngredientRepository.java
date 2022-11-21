@@ -21,8 +21,12 @@ public class IngredientRepository {
     public List<IngredientRes> getById(Integer id){
 
         return jdbcTemplate.query("select if.id, f.name, if.amount, if.amount_type\n" +
-                "from tb_ingredient_food if, tb_ingredient i , tb_food f\n" +
-                "where if.food_id = f.id and if.ingredient_id = ?", new BeanPropertyRowMapper<>(IngredientRes.class), id);
+                "from tb_ingredient_food if,\n" +
+                "     tb_ingredient i,\n" +
+                "     tb_food f\n" +
+                "where if.food_id = f.id\n" +
+                "  and if.ingredient_id = ?\n" +
+                "group by if.id, f.name, if.amount, if.amount_type", new BeanPropertyRowMapper<>(IngredientRes.class), id);
     }
     public Integer post(Ingredient i){
 

@@ -14,7 +14,14 @@ import java.util.Date;
 @NoArgsConstructor
 public class Index {
     private Integer id;
-    private Double index_number;
+    private Integer month;
+    private Double i_num_m_3;
+    private Double i_num_m_2;
+    private Double i_num_m_1;
+    private Double i_num_med;
+    private Double i_num_p_1;
+    private Double i_num_p_2;
+    private Double i_num_p_3;
     private String type;
     private String status;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")

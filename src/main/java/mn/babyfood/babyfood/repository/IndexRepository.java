@@ -18,8 +18,7 @@ public class IndexRepository {
         return jdbcTemplate.query("SELECT * FROM TB_INDEX", new BeanPropertyRowMapper<>(Index.class));
     }
     public Integer post(Index i){
-
-        return jdbcTemplate.update("INSERT INTO TB_INDEX (index_number, type, status, created_on, updated_on) VALUES(?, ?, ?, current_timestamp, current_timestamp)",
-                i.getIndex_number(), i.getType(), i.getStatus());
+        return jdbcTemplate.update("INSERT INTO TB_INDEX (month, i_num_m_3, i_num_m_2, i_num_m_1, i_num_med, i_num_p_1, i_num_p_2, i_num_p_3, type, status, created_on, updated_on) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, current_timestamp, current_timestamp)",
+                i.getMonth(), i.getI_num_m_3(), i.getI_num_m_2(), i.getI_num_m_1(), i.getI_num_med(), i.getI_num_p_1(), i.getI_num_p_2(), i.getI_num_p_3(), i.getType(), i.getStatus());
     }
 }

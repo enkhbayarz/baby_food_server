@@ -20,6 +20,8 @@ public class IngredientFood {
     private Integer ingredient_id;
     private String type;
     private String status;
+    private Integer amount;
+    private String amount_type;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date created_on;
 }
