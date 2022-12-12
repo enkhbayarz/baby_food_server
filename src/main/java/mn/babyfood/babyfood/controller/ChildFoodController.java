@@ -30,6 +30,20 @@ public class ChildFoodController {
         }
         return ResponseEntity.ok(response);
     }
+    @GetMapping("child")
+    public ResponseEntity<?> getByChild(@RequestParam Integer value) {
+        log.info("START /GET getChildFood CONTROLLER");
+        var response = this.apiUtil.buildLocalizedResponse(null);
+        try {
+            response.setBody(childFoodService.getByChild(value));
+        } catch (final Exception ex) {
+            log.error("ERROR /GET getChildFood CONTROLLER: {}", ex.getMessage());
+            response = this.apiUtil.setLocalizedErrorResponse(new String[] {ex.getMessage()}, response);
+        } finally {
+            log.info("END /GET getChildFood CONTROLLER");
+        }
+        return ResponseEntity.ok(response);
+    }
 
     @PostMapping()
     public ResponseEntity<?> post(@RequestBody ChildFood childFood) {

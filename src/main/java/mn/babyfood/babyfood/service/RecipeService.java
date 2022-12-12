@@ -27,7 +27,7 @@ public class RecipeService {
         final var meal = mealService.getById(mealId);
 
         final var ingredientRes = ingredientService.getById(recipe.getIngredient_id());
-
+        System.out.println(ingredientRes);
 
         return RecipeRes.builder()
                 .meal(meal)

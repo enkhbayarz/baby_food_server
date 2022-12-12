@@ -15,6 +15,9 @@ public class ChildFoodService {
     public List<ChildFood> get() {
         return childFoodRepository.get();
     }
+    public List<ChildFood> getByChild(Integer id) {
+        return childFoodRepository.getByChild(id);
+    }
     public Integer post(ChildFood childFood){
         return childFoodRepository.post(childFood);
     }
