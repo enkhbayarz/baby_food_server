@@ -31,11 +31,11 @@ public class RecipeController {
         return ResponseEntity.ok(response);
     }
     @GetMapping("mealid")
-    public ResponseEntity<?>  getByMealId(@RequestParam Integer id) {
+    public ResponseEntity<?>  getByMealId(@RequestParam Integer id, @RequestParam Integer childId) {
         log.info("START /GET getRecipeByMealId CONTROLLER");
         var response = this.apiUtil.buildLocalizedResponse(null);
         try {
-            response.setBody(recipeService.getByMealId(id));
+            response.setBody(recipeService.getByMealId(id, childId));
         } catch (final Exception ex) {
             log.error("ERROR /GET getRecipeByMealId CONTROLLER: {}", ex.getMessage());
             response = this.apiUtil.setLocalizedErrorResponse(new String[] {ex.getMessage()}, response);

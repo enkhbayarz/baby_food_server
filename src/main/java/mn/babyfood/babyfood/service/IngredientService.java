@@ -17,8 +17,8 @@ public class IngredientService {
         return ingredientRepository.get();
     }
 
-    public List<IngredientRes> getById(Integer id) {
-        return ingredientRepository.getById(id);
+    public List<IngredientRes> getById(Integer id, Integer childId) {
+        return ingredientRepository.getById(id, childId);
     }
 
     public Integer post(Ingredient ingredient) {

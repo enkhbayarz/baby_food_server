@@ -18,15 +18,14 @@ public class IngredientRepository {
 
         return jdbcTemplate.query("SELECT * FROM TB_INGREDIENT", new BeanPropertyRowMapper<>(Ingredient.class));
     }
-    public List<IngredientRes> getById(Integer id){
+    public List<IngredientRes> getById(Integer id, Integer childId ){
 
         return jdbcTemplate.query("select if.id, f.name, if.amount, if.amount_type\n" +
                 "from tb_ingredient_food if,\n" +
-                "     tb_ingredient i,\n" +
                 "     tb_food f\n" +
                 "where if.food_id = f.id\n" +
-                "  and if.ingredient_id = ?\n" +
-                "group by if.id, f.name, if.amount, if.amount_type", new BeanPropertyRowMapper<>(IngredientRes.class), id);
+                "  and if.ingredient_id = ? and f.id not in (select if.food_id from tb_child_food if where child_id = ?)\n" +
+                "group by if.id, f.name, if.amount, if.amount_type", new BeanPropertyRowMapper<>(IngredientRes.class), id, childId);
     }
     public Integer post(Ingredient i){
 

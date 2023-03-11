@@ -19,14 +19,14 @@ public class RecipeService {
     public List<Recipe> get() {
         return recipeRepository.get();
     }
-    public RecipeRes getByMealId(Integer mealId) {
+    public RecipeRes getByMealId(Integer mealId, Integer childId) {
         final var recipe=  recipeRepository.getByMealId(mealId).get(0);
 
         final var instruction  = instructionService.getById(recipe.getInstruction_id());
 
         final var meal = mealService.getById(mealId);
 
-        final var ingredientRes = ingredientService.getById(recipe.getIngredient_id());
+        final var ingredientRes = ingredientService.getById(recipe.getIngredient_id(),childId );
         System.out.println(ingredientRes);
 
         return RecipeRes.builder()

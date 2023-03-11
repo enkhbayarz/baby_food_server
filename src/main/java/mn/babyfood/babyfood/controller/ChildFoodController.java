@@ -60,4 +60,19 @@ public class ChildFoodController {
         return ResponseEntity.ok(response);
 
     }
+    @DeleteMapping()
+    public ResponseEntity<?> delete(@RequestBody ChildFood childFood) {
+        log.info("START /DELETE deleteChildFood CONTROLLER");
+        var response = this.apiUtil.buildLocalizedResponse(null);
+        try {
+            response.setBody(childFoodService.delete(childFood));
+        } catch (final Exception ex) {
+            log.error("ERROR /DELETE deleteChildFood CONTROLLER: {}", ex.getMessage());
+            response = this.apiUtil.setLocalizedErrorResponse(new String[] {ex.getMessage()}, response);
+        } finally {
+            log.info("END /DELETE deleteChildFood CONTROLLER");
+        }
+        return ResponseEntity.ok(response);
+
+    }
 }

@@ -21,4 +21,7 @@ public class ChildFoodService {
     public Integer post(ChildFood childFood){
         return childFoodRepository.post(childFood);
     }
+    public Integer delete(ChildFood childFood){
+        return childFoodRepository.delete(childFood);
+    }
 }
